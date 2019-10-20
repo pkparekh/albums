@@ -8,7 +8,7 @@ import AlbumList from './src/components/AlbumList';
 // Create a component - It is a js function that returns some amout of jsx
 const App = () => {
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Header headerText={'Albums!'} />
             <AlbumList />
         </View>
