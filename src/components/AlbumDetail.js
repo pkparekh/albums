@@ -1,5 +1,5 @@
 import React from 'react';
-import{ Text, View, Image } from 'react-native';
+import{ Text, View, Image, Linking } from 'react-native';
 
 import Card from './Card';
 import CardSection from './CardSection';
@@ -7,9 +7,9 @@ import Button from './Button';
 
 const AlbumDetail = ({ album }) => {
     // destructuring the prop and its properties which are used in this component
-    const { title, artist, thumbnail_image, image } = album;
+    const { title, artist, thumbnail_image, image, url } = album;
     // destructuring the styles object
-    const { 
+    const {
         headerContentStyle,
         headerTextStyle,
         thumbnailStyle,
@@ -17,13 +17,15 @@ const AlbumDetail = ({ album }) => {
         imageStyle
     } = styles;
 
+    // used static urls for restriction concerns in office
     return (
         <Card>
             <CardSection>
                 <View style={thumbnailContainerStyle}>
-                    <Image 
+                    <Image
                         style={thumbnailStyle}
-                        source={{ uri: thumbnail_image }}
+                        // source={{ uri: thumbnail_image }}
+                        source={{ uri: 'https://media.pitchfork.com/photos/5929c375eb335119a49ed6f6/1:1/w_320/d17fe61e.jpg' }}
                     />
                 </View>
                 <View style={headerContentStyle}>
@@ -35,12 +37,18 @@ const AlbumDetail = ({ album }) => {
             <CardSection>
                 <Image
                     style={imageStyle}
-                    source={{ uri: image }}
+                    // source={{ uri: image }}
+                    source={{ uri: 'https://media.pitchfork.com/photos/5929c375eb335119a49ed6f6/1:1/w_320/d17fe61e.jpg' }}
                 />
             </CardSection>
 
             <CardSection>
-                <Button />
+                {/* <Button onPress={() => Linking.openURL(url)}>
+                    Buy Now
+                </Button> */}
+                <Button onPress={() => Linking.openURL('https://google.com')}>
+                    Buy Now
+                </Button>
             </CardSection>
         </Card>
     );
